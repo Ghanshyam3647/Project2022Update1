@@ -1,0 +1,23 @@
+Update 1
+
+- Fixed the "Dark Theme" Button on Menu Page Not Aligned Correctly
+
+- Changed the Background Colour of Our Menu Page
+
+- Changed the Main Low-Resolution Image of Main Page
+
+- Added Purple Animated Bar in each Section on Main Page
+
+- Changed the Image of "Discover our Story"
+
+- Changed the Image of "The Perfect Blend"
+
+- Changed the Background Colour of Our Home Page
+
+- Lightened the Text Colour on our FEEDBACK Page
+
+- Fixed the Cursor on Changing on Submit Button on FEEDBACK Page
+
+- Improved Corner Shape of Border in Feedback Form
+
+- Fixed Position of Newsletter Icon at Bottom of Main Page

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <!-- <title>Transparent Login Form UI</title> -->
+    <link rel="stylesheet" href="form.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <title>ROSA Reservation</title>
+  </head>
+  <script>
+    var i = 0;
+    var txt = "Rosa"; /* The text */
+    var speed = 250; /* The speed/duration of the effect in milliseconds */
+
+    window.onload = function typeWriter() {
+      if (i < txt.length) {
+        document.getElementById("head-sl").innerHTML += txt.charAt(i);
+        i++;
+        setTimeout(typeWriter, speed);
+      }
+    };
+  </script>
+  <body>
+    <div class="bg-img">
+      <div class="content">
+        <header>
+          <a id="head-sl" href="index.html" style="color: whitesmoke"></a>
+        </header>
+        <form method="POST" autocomplete="off" name="google-sheet">
+          <div class="field">
+            <span class="fa fa-user"></span>
+            <input
+              name="Email"
+              type="text"
+              required
+              placeholder="Email or Phone"
+            />
+          </div>
+          <div class="field space">
+            <span class="fa fa-address-book"></span>
+            <input
+              name="Contact No."
+              type="number"
+              class="pass-key"
+              maxlength="10"
+              placeholder="Contact No."
+              required
+            />
+          </div>
+
+          <input name="Date" type="Date" class="field space" />
+
+          <input name="Time" type="time" class="field space" />
+
+          <input
+            name="No. of guests"
+            type="number"
+            class="field space"
+            placeholder="No. of guests"
+          />
+          <div class="pass">
+            <a href="#">&nbsp;</a>
+          </div>
+          <div class="field">
+            <input name="submit" type="submit" value="Submit" />
+          </div>
+        </form>
+      </div>
+    </div>
+    <script type="text/javascript">
+      const scriptURL =
+        "https://script.google.com/macros/s/AKfycbzqKASoeceE-kM7BHSH-EKEZycTwPlCr7L4brKCYL1vzXvDT9iyDP-IF1g4D5qvTptdqg/exec";
+      const form = document.forms["google-sheet"];
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        fetch(scriptURL, { method: "POST", body: new FormData(form) })
+          .then((response) => alert("Reservation Done"))
+          .catch((error) => console.error("Error!", error.message));
+      });
+    </script>
+  </body>
+</html>

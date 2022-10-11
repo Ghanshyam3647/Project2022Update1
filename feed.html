@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>The Rosa feedback</title>
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+
+    <script src="https://fonts.googleapis.com/css?family=Raleway:400,500"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+  </head>
+
+  <body>
+    <link rel="stylesheet" href="feed.css" />
+    <h1 id="title" style="text-decoration: underline">
+      <a href="index.html" style="color: turquoise">Rosa</a>
+    </h1>
+    <h2 style="color: turquoise" id="title">Feedback Form</h2>
+
+    <div id="form-outer">
+      <p id="description"></p>
+      <form method="POST" autocomplete="off" name="google-sheet">
+        <div class="rowTab">
+          <div class="labels">
+            <label id="name-label" for="name">* Name: </label>
+          </div>
+          <div class="rightTab">
+            <input
+              autofocus
+              type="text"
+              name="Name"
+              id="name"
+              class="input-field"
+              placeholder="Enter your name"
+              required
+            />
+          </div>
+        </div>
+        <div class="rowTab">
+          <div class="labels">
+            <label id="email-label" for="email">* Email: </label>
+          </div>
+          <div class="rightTab">
+            <input
+              type="email"
+              name="Email"
+              id="email"
+              class="input-field"
+              required
+              placeholder="Enter your Email"
+            />
+          </div>
+        </div>
+        <div class="rowTab">
+          <div class="labels">
+            <label id="number-label" for="age">* Age: </label>
+          </div>
+          <div class="rightTab">
+            <input
+              type="number"
+              name="Age"
+              id="number"
+              min="1"
+              max="125"
+              class="input-field"
+              placeholder="Age"
+            />
+          </div>
+        </div>
+        <div class="rowTab">
+          <div class="labels">
+            <label for="currentPos">Location you visited</label>
+          </div>
+          <div class="rightTab">
+            <select id="dropdown" name="Location you visited" class="dropdown">
+              <option disabled value>Select an option</option>
+              <option value="Chandigarh">Chandigarh</option>
+              <option value="Panchkula">Panchkula</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="rowTab">
+          <div class="labels">
+            <label for="userRating">* DineIn/ Take Out</label>
+          </div>
+          <div class="rightTab">
+            <ul style="list-style: none">
+              <li class="radio">
+                <label
+                  >Dine In<input
+                    name="DineIn/ Take Outs"
+                    value="DineIn"
+                    type="radio"
+                    class="userRatings"
+                /></label>
+              </li>
+              <li class="radio">
+                <label
+                  >Take Out<input
+                    name="DineIn/ Take Out"
+                    value="TakeOuts"
+                    type="radio"
+                    class="userRatings"
+                /></label>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="rightTab">
+          <div class="labels">
+            <label for="preferences"
+              >What should we improved in the future<br />(Check all that
+              apply):
+            </label>
+          </div>
+          <div class="rightTab">
+            <ul id="preferences" style="list-style: none">
+              <li class="checkbox">
+                <label
+                  ><input
+                    name="Improvement Need"
+                    value="Food Quality"
+                    type="checkbox"
+                    class="userRatings"
+                  />Food Quality</label
+                >
+              </li>
+              <li class="checkbox">
+                <input
+                  name="Improvement Need"
+                  value="Services"
+                  type="checkbox"
+                  class="userRatings"
+                />Services
+              </li>
+              <li class="checkbox">
+                <label
+                  ><input
+                    name="Improvement Need"
+                    value="Interior"
+                    type="checkbox"
+                    class="userRatings"
+                  />Interior</label
+                >
+              </li>
+              <li class="checkbox">
+                <label
+                  ><input
+                    name="Improvement Need"
+                    value="Menu"
+                    type="checkbox"
+                    class="userRatings"
+                  />Menu</label
+                >
+              </li>
+              <li class="checkbox">
+                <label
+                  ><input
+                    name="Improvement Need"
+                    value="Food spices"
+                    type="checkbox"
+                    class="userRatings"
+                  />Food spices</label
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="rowTab">
+          <div class="labels">
+            <label for="comments">Any Comments or Suggestions?</label>
+          </div>
+          <div class="rightTab">
+            <textarea
+              id="comments"
+              class="input-field"
+              style="height: 50px; resize: vertical"
+              name="Comment"
+              placeholder="Enter your comment here..."
+            ></textarea>
+          </div>
+        </div>
+        <button name="submit" id="submit" type="submit">Submit</button>
+      </form>
+      <script src="feed.js"></script>
+    </div>
+    <script type="text/javascript">
+      const scriptURL =
+        "https://script.google.com/macros/s/AKfycbyrchbMf36_rWUHMq2iga9v2cQojpUn3Z0ElQQR_uABAHg9N5LB9-DQ3cY2ms469P-p/exec";
+      const form = document.forms["google-sheet"];
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        fetch(scriptURL, { method: "POST", body: new FormData(form) })
+          .then((response) => alert("Reservation Done"))
+          .catch((error) => console.error("Error!", error.message));
+      });
+    </script>
+  </body>
+</html>
